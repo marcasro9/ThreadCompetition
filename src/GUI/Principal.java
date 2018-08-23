@@ -6,19 +6,31 @@
 package GUI;
 
 import domain.MoveObject;
+import java.awt.Image;
+import javax.swing.Icon;
+import javax.swing.ImageIcon;
 
 /**
  *
  * @author marca
  */
 public class Principal extends javax.swing.JFrame {
+    
+    
+    private int position_tachometer = 0;
+    private boolean barrer = false;
+    private boolean barrer_carri_1=false;
+    private boolean barrer_carri_2=false;
 
     /**
      * Creates new form Principal
      */
     public Principal() {
         initComponents();
+        loadImage();
         setLocationRelativeTo(null);
+        //this.setExtendedState(MAXIMIZED_BOTH);
+        this.repaint();
     }
 
     /**
@@ -30,107 +42,162 @@ public class Principal extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jLabel1 = new javax.swing.JLabel();
-        btn_speed = new javax.swing.JButton();
+        Lb_Speedometer = new javax.swing.JLabel();
+        Btn_Gas_Brake = new javax.swing.JButton();
+        Btn_Brake = new javax.swing.JButton();
         jButton1 = new javax.swing.JButton();
-        btn_create = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
-        jButton3 = new javax.swing.JButton();
-        jButton4 = new javax.swing.JButton();
-        jButton5 = new javax.swing.JButton();
-        jButton6 = new javax.swing.JButton();
-        jButton7 = new javax.swing.JButton();
+        Lb_Car = new javax.swing.JLabel();
+        btn_Barrer = new javax.swing.JButton();
+        btn_carril_2 = new javax.swing.JButton();
+        btn_carril_1 = new javax.swing.JButton();
+        jFondo = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+        getContentPane().add(Lb_Speedometer, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 720, 150, 150));
 
-        jLabel1.setIcon(new javax.swing.ImageIcon("C:\\Users\\marca\\Downloads\\Imagenes\\Pista.jpg")); // NOI18N
-        jLabel1.setFocusable(false);
-        jLabel1.setRequestFocusEnabled(false);
-        jLabel1.setVerifyInputWhenFocusTarget(false);
-
-        btn_speed.setText("Speed");
-
-        jButton1.setText("Value");
-
-        btn_create.setText("Create");
-        btn_create.addActionListener(new java.awt.event.ActionListener() {
+        Btn_Gas_Brake.setBackground(new java.awt.Color(0, 162, 232));
+        Btn_Gas_Brake.setBorder(null);
+        Btn_Gas_Brake.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btn_createActionPerformed(evt);
+                Btn_Gas_BrakeActionPerformed(evt);
             }
         });
+        getContentPane().add(Btn_Gas_Brake, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 750, 70, 120));
 
-        jButton2.setText("Barrier");
+        Btn_Brake.setBackground(new java.awt.Color(0, 162, 232));
+        Btn_Brake.setBorder(null);
+        Btn_Brake.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                Btn_BrakeActionPerformed(evt);
+            }
+        });
+        getContentPane().add(Btn_Brake, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 800, 70, 70));
 
-        jButton3.setText("Revert");
+        jButton1.setFont(new java.awt.Font("Tempus Sans ITC", 1, 48)); // NOI18N
+        jButton1.setText("Create");
+        jButton1.setBorder(null);
+        getContentPane().add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 890, 300, 70));
+        getContentPane().add(Lb_Car, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 720, 120, 120));
 
-        jButton4.setText("Carriles");
+        btn_Barrer.setBackground(new java.awt.Color(0, 162, 232));
+        btn_Barrer.setBorder(null);
+        btn_Barrer.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_BarrerActionPerformed(evt);
+            }
+        });
+        getContentPane().add(btn_Barrer, new org.netbeans.lib.awtextra.AbsoluteConstraints(700, 730, 240, 130));
 
-        jButton5.setText("Simulation");
+        btn_carril_2.setBackground(new java.awt.Color(102, 102, 102));
+        btn_carril_2.setBorder(null);
+        btn_carril_2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_carril_2ActionPerformed(evt);
+            }
+        });
+        getContentPane().add(btn_carril_2, new org.netbeans.lib.awtextra.AbsoluteConstraints(234, 360, 65, 40));
 
-        jButton6.setText("STOP");
+        btn_carril_1.setBackground(new java.awt.Color(102, 102, 102));
+        btn_carril_1.setBorder(null);
+        btn_carril_1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_carril_1ActionPerformed(evt);
+            }
+        });
+        getContentPane().add(btn_carril_1, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 360, 65, 40));
 
-        jButton7.setText("Pause");
-
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(118, 118, 118)
-                        .addComponent(jLabel1))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(83, 83, 83)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                            .addComponent(btn_create, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
-                                .addComponent(btn_speed, javax.swing.GroupLayout.PREFERRED_SIZE, 82, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(18, 18, 18)
-                                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 82, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addGap(39, 39, 39)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 82, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(18, 18, 18)
-                                .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 82, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addComponent(jButton4, javax.swing.GroupLayout.PREFERRED_SIZE, 182, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(18, 18, 18)
-                        .addComponent(jButton5)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jButton6, javax.swing.GroupLayout.PREFERRED_SIZE, 93, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(jButton7, javax.swing.GroupLayout.PREFERRED_SIZE, 77, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(87, Short.MAX_VALUE))
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addComponent(jLabel1)
-                .addGap(46, 46, 46)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btn_speed, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton5, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton6, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton7, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btn_create)
-                    .addComponent(jButton4))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-        );
+        jFondo.setFocusable(false);
+        jFondo.setRequestFocusEnabled(false);
+        jFondo.setVerifyInputWhenFocusTarget(false);
+        getContentPane().add(jFondo, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1380, 995));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void btn_createActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_createActionPerformed
+    private void Btn_Gas_BrakeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Btn_Gas_BrakeActionPerformed
         // TODO add your handling code here:
-        MoveObject object = new MoveObject();
-        object.run();
-    }//GEN-LAST:event_btn_createActionPerformed
+        int new_position_tachomer = position_tachometer+1;
+        if(new_position_tachomer<3){
+            position_tachometer=position_tachometer+1;
+            ImageIcon speedometer = new ImageIcon("src/Assets/speedometer_icon_"+position_tachometer+".png");
+            Icon iconoSpeedometer = new ImageIcon(speedometer.getImage().getScaledInstance(Lb_Speedometer.getWidth(), Lb_Speedometer.getHeight(), Image.SCALE_DEFAULT));
+            Lb_Speedometer.setIcon(iconoSpeedometer);
+            ImageIcon car = new ImageIcon("src/Assets/car_icon_"+position_tachometer+".png");
+            Icon iconoCar = new ImageIcon(car.getImage().getScaledInstance(Lb_Car.getWidth(), Lb_Car.getHeight(), Image.SCALE_DEFAULT));
+            Lb_Car.setIcon(iconoCar);
+        }
+        else {
+            System.out.println("Alcanzo la velocidad maxima");
+        }
+        
+    }//GEN-LAST:event_Btn_Gas_BrakeActionPerformed
+
+    private void Btn_BrakeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Btn_BrakeActionPerformed
+        // TODO add your handling code here:
+        int new_position_tachomer = position_tachometer;
+        if(new_position_tachomer>0){
+            position_tachometer=position_tachometer-1;
+            ImageIcon speedometer = new ImageIcon("src/Assets/speedometer_icon_"+position_tachometer+".png");
+            Icon iconoSpeedometer = new ImageIcon(speedometer.getImage().getScaledInstance(Lb_Speedometer.getWidth(), Lb_Speedometer.getHeight(), Image.SCALE_DEFAULT));
+            Lb_Speedometer.setIcon(iconoSpeedometer);
+            ImageIcon car = new ImageIcon("src/Assets/car_icon_"+position_tachometer+".png");
+            Icon iconoCar = new ImageIcon(car.getImage().getScaledInstance(Lb_Car.getWidth(), Lb_Car.getHeight(), Image.SCALE_DEFAULT));
+            Lb_Car.setIcon(iconoCar);
+        }
+        else {
+            System.out.println("Alcanzo la velocidad minima");
+        }
+    }//GEN-LAST:event_Btn_BrakeActionPerformed
+
+    private void btn_BarrerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_BarrerActionPerformed
+        // TODO add your handling code here:
+        if(barrer==false){
+            barrer=true;
+            ImageIcon barrer = new ImageIcon("src/Assets/open_toll_icon.png");
+            Icon iconBarrer = new ImageIcon(barrer.getImage().getScaledInstance(btn_Barrer.getWidth(), btn_Barrer.getHeight(), Image.SCALE_DEFAULT));
+            btn_Barrer.setIcon(iconBarrer);
+        }else{
+            barrer=false;
+            ImageIcon barrer = new ImageIcon("src/Assets/close_toll_icon.png");
+            Icon iconBarrer = new ImageIcon(barrer.getImage().getScaledInstance(btn_Barrer.getWidth(), btn_Barrer.getHeight(), Image.SCALE_DEFAULT));
+            btn_Barrer.setIcon(iconBarrer);
+        }
+    }//GEN-LAST:event_btn_BarrerActionPerformed
+
+    private void btn_carril_1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_carril_1ActionPerformed
+        // TODO add your handling code here:
+        if(barrer_carri_1==true){
+            ImageIcon carril1 = new ImageIcon("src/Assets/barrer-activate-line-icon.png");
+            Icon iconoCarril1 = new ImageIcon(carril1.getImage().getScaledInstance(btn_carril_1.getWidth(), btn_carril_1.getHeight(), Image.SCALE_DEFAULT));
+            btn_carril_1.setIcon(iconoCarril1);
+            this.repaint();
+            barrer_carri_1=false;
+        }else{
+            ImageIcon carril1 = new ImageIcon("src/Assets/barrer-desactive-line-icon.png");
+            Icon iconoCarril1 = new ImageIcon(carril1.getImage().getScaledInstance(btn_carril_1.getWidth(), btn_carril_1.getHeight(), Image.SCALE_DEFAULT));
+            btn_carril_1.setIcon(iconoCarril1);
+            this.repaint();
+            barrer_carri_1=true;
+        }
+    }//GEN-LAST:event_btn_carril_1ActionPerformed
+
+    private void btn_carril_2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_carril_2ActionPerformed
+        // TODO add your handling code here:
+        if(barrer_carri_2==true){
+            ImageIcon carril1 = new ImageIcon("src/Assets/barrer-activate-line-icon.png");
+            Icon iconoCarril1 = new ImageIcon(carril1.getImage().getScaledInstance(btn_carril_1.getWidth(), btn_carril_1.getHeight(), Image.SCALE_DEFAULT));
+            btn_carril_2.setIcon(iconoCarril1);
+            this.repaint();
+            barrer_carri_2=false;
+        }else{
+            ImageIcon carril1 = new ImageIcon("src/Assets/barrer-desactive-line-icon.png");
+            Icon iconoCarril1 = new ImageIcon(carril1.getImage().getScaledInstance(btn_carril_2.getWidth(), btn_carril_2.getHeight(), Image.SCALE_DEFAULT));
+            btn_carril_2.setIcon(iconoCarril1);
+            this.repaint();
+            barrer_carri_2=true;
+        }
+    }//GEN-LAST:event_btn_carril_2ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -166,17 +233,47 @@ public class Principal extends javax.swing.JFrame {
             }
         });
     }
+    
+    public void loadImage(){
+        
+        ImageIcon fondo = new ImageIcon("src/Assets/background_icon_0.png");
+        Icon iconoFondo = new ImageIcon(fondo.getImage().getScaledInstance(jFondo.getWidth(), jFondo.getHeight(), Image.SCALE_DEFAULT));
+        jFondo.setIcon(iconoFondo);
+        
+        ImageIcon gasBrake = new ImageIcon("src/Assets/accelerator_icon.png");
+        Icon iconoGasBrake = new ImageIcon(gasBrake.getImage().getScaledInstance(Btn_Gas_Brake.getWidth(), Btn_Gas_Brake.getHeight(), Image.SCALE_DEFAULT));
+        Btn_Gas_Brake.setIcon(iconoGasBrake);
+        
+        ImageIcon brake = new ImageIcon("src/Assets/brake_icon.png");
+        Icon iconoBrake = new ImageIcon(brake.getImage().getScaledInstance(Btn_Brake.getWidth(), Btn_Brake.getHeight(), Image.SCALE_DEFAULT));
+        Btn_Brake.setIcon(iconoBrake);
+        
+        ImageIcon car = new ImageIcon("src/Assets/car_icon_0.png");
+        Icon iconoCar = new ImageIcon(car.getImage().getScaledInstance(Lb_Car.getWidth(), Lb_Car.getHeight(), Image.SCALE_DEFAULT));
+        Lb_Car.setIcon(iconoCar);
+        
+        ImageIcon speedometer = new ImageIcon("src/Assets/speedometer_icon_0.png");
+        Icon iconoSpeedometer = new ImageIcon(speedometer.getImage().getScaledInstance(Lb_Speedometer.getWidth(), Lb_Speedometer.getHeight(), Image.SCALE_DEFAULT));
+        Lb_Speedometer.setIcon(iconoSpeedometer);
+        
+        ImageIcon barrer = new ImageIcon("src/Assets/open_toll_icon.png");
+        Icon iconBarrer = new ImageIcon(barrer.getImage().getScaledInstance(btn_Barrer.getWidth(), btn_Barrer.getHeight(), Image.SCALE_DEFAULT));
+        btn_Barrer.setIcon(iconBarrer);
+        ImageIcon barrer_lane = new ImageIcon("src/Assets/barrier_icon.png");
+        Icon iconoCarril = new ImageIcon(barrer_lane.getImage().getScaledInstance(btn_carril_1.getWidth(), btn_carril_1.getHeight(), Image.SCALE_DEFAULT));
+        btn_carril_1.setIcon(iconoCarril);
+        btn_carril_2.setIcon(iconoCarril);
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btn_create;
-    private javax.swing.JButton btn_speed;
+    private javax.swing.JButton Btn_Brake;
+    private javax.swing.JButton Btn_Gas_Brake;
+    private javax.swing.JLabel Lb_Car;
+    private javax.swing.JLabel Lb_Speedometer;
+    private javax.swing.JButton btn_Barrer;
+    private javax.swing.JButton btn_carril_1;
+    private javax.swing.JButton btn_carril_2;
     private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton3;
-    private javax.swing.JButton jButton4;
-    private javax.swing.JButton jButton5;
-    private javax.swing.JButton jButton6;
-    private javax.swing.JButton jButton7;
-    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jFondo;
     // End of variables declaration//GEN-END:variables
 }

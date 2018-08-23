@@ -5,6 +5,10 @@
  */
 package GUI;
 
+import java.awt.Image;
+import javax.swing.Icon;
+import javax.swing.ImageIcon;
+
 /**
  *
  * @author marca
@@ -16,6 +20,7 @@ public class Home extends javax.swing.JFrame {
      */
     public Home() {
         initComponents();
+        loadImage();
         setLocationRelativeTo(null);
     }
 
@@ -30,6 +35,7 @@ public class Home extends javax.swing.JFrame {
 
         btn_play = new javax.swing.JButton();
         btn_exit = new javax.swing.JButton();
+        jAbout = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -44,7 +50,7 @@ public class Home extends javax.swing.JFrame {
                 btn_playActionPerformed(evt);
             }
         });
-        getContentPane().add(btn_play, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 470, 110, 50));
+        getContentPane().add(btn_play, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 470, 110, 50));
 
         btn_exit.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
         btn_exit.setText("Exit");
@@ -53,9 +59,16 @@ public class Home extends javax.swing.JFrame {
                 btn_exitActionPerformed(evt);
             }
         });
-        getContentPane().add(btn_exit, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 470, 110, 50));
+        getContentPane().add(btn_exit, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 470, 110, 50));
 
-        jLabel1.setIcon(new javax.swing.ImageIcon("C:\\Users\\marca\\Downloads\\Imagenes\\Menu.jpg")); // NOI18N
+        jAbout.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jAboutActionPerformed(evt);
+            }
+        });
+        getContentPane().add(jAbout, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 470, 50, 50));
+
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Assets/Menu.jpg"))); // NOI18N
         getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
 
         pack();
@@ -73,6 +86,14 @@ public class Home extends javax.swing.JFrame {
         this.dispose();
         
     }//GEN-LAST:event_btn_playActionPerformed
+
+    private void jAboutActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jAboutActionPerformed
+        // TODO add your handling code here:
+        About about = new About();
+        about.setVisible(true);
+        this.dispose();
+        
+    }//GEN-LAST:event_jAboutActionPerformed
 
     /**
      * @param args the command line arguments
@@ -109,9 +130,15 @@ public class Home extends javax.swing.JFrame {
         });
     }
 
+    private void loadImage(){
+        ImageIcon about = new ImageIcon("src/Assets/about-icon-2.png");
+        Icon iconoAbout = new ImageIcon(about.getImage().getScaledInstance(jAbout.getWidth(), jAbout.getHeight(), Image.SCALE_DEFAULT));
+        jAbout.setIcon(iconoAbout);
+    }
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btn_exit;
     private javax.swing.JButton btn_play;
+    private javax.swing.JButton jAbout;
     private javax.swing.JLabel jLabel1;
     // End of variables declaration//GEN-END:variables
 }
