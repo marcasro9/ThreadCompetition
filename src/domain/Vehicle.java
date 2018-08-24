@@ -22,23 +22,64 @@ public class Vehicle {
     private int imgNum;
     private Image image;
     private ArrayList<Image> sprite;
+    private int speed;
+    private boolean direction;
+    private boolean canMove;
 
     public Vehicle() {
     }
 
-    public Vehicle(int id, double x, double y, int imgNum, Image image, ArrayList<Image> sprite) {
+    public Vehicle(int id, double x, double y, int imgNum, Image image, ArrayList<Image> sprite,
+            int speed) {
         this.id = id;
         this.x = x;
         this.y = y;
         this.imgNum = imgNum;
         this.image = image;
         this.sprite = sprite;
+        this.speed = speed;
+        this.direction = true;
+        this.canMove = true;
     }
 
     public Vehicle(double x, double y, int imgNum) {
         this.x = x;
         this.y = y;
         this.imgNum = imgNum;
+    }
+
+    public int getSpeed() {
+        return speed;
+    }
+
+    public void setSpeed(int speed) {
+        this.speed = speed;
+    }
+
+    public boolean isDirection() {
+        return direction;
+    }
+
+    public void setDirection(boolean direction) {
+        this.direction = direction;
+    }
+
+    public boolean isCanMove() {
+        return canMove;
+    }
+
+    public void setCanMove(boolean canMove) {
+        this.canMove = canMove;
+    }
+    
+    public void move(){
+        if(canMove){
+            if(direction){//if direction is true, the vehicle can move down 
+                this.y = this.y + speed;
+            }else{
+                this.y = this.y - speed;
+            }
+        }
     }
     
     

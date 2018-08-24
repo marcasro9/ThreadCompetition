@@ -14,7 +14,7 @@ import javafx.scene.image.Image;
  *
  * @author marca
  */
-public class MoveObject  extends Vehicle{
+public class MoveObject extends Vehicle{
     
     public MoveObject(int x, int y, int imgNum) throws FileNotFoundException {
         super(x,y,imgNum);
@@ -24,7 +24,6 @@ public class MoveObject  extends Vehicle{
     public MoveObject() {
     }
 
-    
     //Change
     public void setSprite() throws FileNotFoundException{
         ArrayList<Image> sprite = super.getSprite();
