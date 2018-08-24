@@ -7,8 +7,10 @@ package GUI;
 
 import domain.MoveObject;
 import java.awt.Image;
+import java.util.TimerTask;
 import javax.swing.Icon;
 import javax.swing.ImageIcon;
+import javax.swing.Timer;
 
 /**
  *
@@ -21,6 +23,15 @@ public class Principal extends javax.swing.JFrame {
     private boolean barrer = false;
     private boolean barrer_carri_1=false;
     private boolean barrer_carri_2=false;
+    private boolean barrer_carri_3=false;
+    private boolean barrer_carri_4=false;
+    private boolean barrer_carri_5=false;
+    private boolean barrer_carri_6=false;
+    private boolean barrer_carri_7=false;
+    private boolean barrer_carri_8=false;
+    private boolean barrer_carri_9=false;
+    private boolean barrer_carri_10=false;
+    private boolean barrer_carri_11=false;
 
     /**
      * Creates new form Principal
@@ -42,19 +53,30 @@ public class Principal extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        Lb_Speedometer = new javax.swing.JLabel();
         Btn_Gas_Brake = new javax.swing.JButton();
         Btn_Brake = new javax.swing.JButton();
-        jButton1 = new javax.swing.JButton();
+        Lb_Speedometer = new javax.swing.JLabel();
         Lb_Car = new javax.swing.JLabel();
+        btn_create_car = new javax.swing.JButton();
         btn_Barrer = new javax.swing.JButton();
+        btn_carril_10 = new javax.swing.JButton();
+        btn_carril_11 = new javax.swing.JButton();
+        btn_carril_9 = new javax.swing.JButton();
+        btn_carril_8 = new javax.swing.JButton();
+        btn_carril_7 = new javax.swing.JButton();
+        btn_carril_6 = new javax.swing.JButton();
+        btn_carril_5 = new javax.swing.JButton();
+        btn_carril_4 = new javax.swing.JButton();
+        btn_carril_3 = new javax.swing.JButton();
         btn_carril_2 = new javax.swing.JButton();
         btn_carril_1 = new javax.swing.JButton();
+        Spn_number_cars = new javax.swing.JSpinner();
+        Btn_reverse = new javax.swing.JButton();
+        Btn_traffic_ligth = new javax.swing.JButton();
         jFondo = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-        getContentPane().add(Lb_Speedometer, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 720, 150, 150));
 
         Btn_Gas_Brake.setBackground(new java.awt.Color(0, 162, 232));
         Btn_Gas_Brake.setBorder(null);
@@ -63,7 +85,7 @@ public class Principal extends javax.swing.JFrame {
                 Btn_Gas_BrakeActionPerformed(evt);
             }
         });
-        getContentPane().add(Btn_Gas_Brake, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 750, 70, 120));
+        getContentPane().add(Btn_Gas_Brake, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 740, 70, 120));
 
         Btn_Brake.setBackground(new java.awt.Color(0, 162, 232));
         Btn_Brake.setBorder(null);
@@ -72,13 +94,19 @@ public class Principal extends javax.swing.JFrame {
                 Btn_BrakeActionPerformed(evt);
             }
         });
-        getContentPane().add(Btn_Brake, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 800, 70, 70));
-
-        jButton1.setFont(new java.awt.Font("Tempus Sans ITC", 1, 48)); // NOI18N
-        jButton1.setText("Create");
-        jButton1.setBorder(null);
-        getContentPane().add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 890, 300, 70));
+        getContentPane().add(Btn_Brake, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 790, 70, 70));
+        getContentPane().add(Lb_Speedometer, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 720, 150, 150));
         getContentPane().add(Lb_Car, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 720, 120, 120));
+
+        btn_create_car.setFont(new java.awt.Font("Tempus Sans ITC", 1, 48)); // NOI18N
+        btn_create_car.setText("Create");
+        btn_create_car.setBorder(null);
+        btn_create_car.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_create_carActionPerformed(evt);
+            }
+        });
+        getContentPane().add(btn_create_car, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 890, 300, 70));
 
         btn_Barrer.setBackground(new java.awt.Color(0, 162, 232));
         btn_Barrer.setBorder(null);
@@ -87,7 +115,88 @@ public class Principal extends javax.swing.JFrame {
                 btn_BarrerActionPerformed(evt);
             }
         });
-        getContentPane().add(btn_Barrer, new org.netbeans.lib.awtextra.AbsoluteConstraints(700, 730, 240, 130));
+        getContentPane().add(btn_Barrer, new org.netbeans.lib.awtextra.AbsoluteConstraints(650, 740, 240, 130));
+
+        btn_carril_10.setBackground(new java.awt.Color(102, 102, 102));
+        btn_carril_10.setBorder(null);
+        btn_carril_10.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_carril_10ActionPerformed(evt);
+            }
+        });
+        getContentPane().add(btn_carril_10, new org.netbeans.lib.awtextra.AbsoluteConstraints(1186, 360, 61, 40));
+
+        btn_carril_11.setBackground(new java.awt.Color(102, 102, 102));
+        btn_carril_11.setBorder(null);
+        btn_carril_11.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_carril_11ActionPerformed(evt);
+            }
+        });
+        getContentPane().add(btn_carril_11, new org.netbeans.lib.awtextra.AbsoluteConstraints(1080, 360, 61, 40));
+
+        btn_carril_9.setBackground(new java.awt.Color(102, 102, 102));
+        btn_carril_9.setBorder(null);
+        btn_carril_9.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_carril_9ActionPerformed(evt);
+            }
+        });
+        getContentPane().add(btn_carril_9, new org.netbeans.lib.awtextra.AbsoluteConstraints(976, 360, 61, 40));
+
+        btn_carril_8.setBackground(new java.awt.Color(102, 102, 102));
+        btn_carril_8.setBorder(null);
+        btn_carril_8.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_carril_8ActionPerformed(evt);
+            }
+        });
+        getContentPane().add(btn_carril_8, new org.netbeans.lib.awtextra.AbsoluteConstraints(870, 360, 61, 40));
+
+        btn_carril_7.setBackground(new java.awt.Color(102, 102, 102));
+        btn_carril_7.setBorder(null);
+        btn_carril_7.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_carril_7ActionPerformed(evt);
+            }
+        });
+        getContentPane().add(btn_carril_7, new org.netbeans.lib.awtextra.AbsoluteConstraints(764, 360, 61, 40));
+
+        btn_carril_6.setBackground(new java.awt.Color(102, 102, 102));
+        btn_carril_6.setBorder(null);
+        btn_carril_6.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_carril_6ActionPerformed(evt);
+            }
+        });
+        getContentPane().add(btn_carril_6, new org.netbeans.lib.awtextra.AbsoluteConstraints(660, 360, 61, 40));
+
+        btn_carril_5.setBackground(new java.awt.Color(102, 102, 102));
+        btn_carril_5.setBorder(null);
+        btn_carril_5.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_carril_5ActionPerformed(evt);
+            }
+        });
+        getContentPane().add(btn_carril_5, new org.netbeans.lib.awtextra.AbsoluteConstraints(555, 360, 61, 40));
+
+        btn_carril_4.setBackground(new java.awt.Color(102, 102, 102));
+        btn_carril_4.setBorder(null);
+        btn_carril_4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_carril_4ActionPerformed(evt);
+            }
+        });
+        getContentPane().add(btn_carril_4, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 360, 61, 40));
+
+        btn_carril_3.setBackground(new java.awt.Color(102, 102, 102));
+        btn_carril_3.setBorder(null);
+        btn_carril_3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_carril_3ActionPerformed(evt);
+            }
+        });
+        getContentPane().add(btn_carril_3, new org.netbeans.lib.awtextra.AbsoluteConstraints(345, 360, 61, 40));
 
         btn_carril_2.setBackground(new java.awt.Color(102, 102, 102));
         btn_carril_2.setBorder(null);
@@ -96,7 +205,7 @@ public class Principal extends javax.swing.JFrame {
                 btn_carril_2ActionPerformed(evt);
             }
         });
-        getContentPane().add(btn_carril_2, new org.netbeans.lib.awtextra.AbsoluteConstraints(234, 360, 65, 40));
+        getContentPane().add(btn_carril_2, new org.netbeans.lib.awtextra.AbsoluteConstraints(238, 360, 61, 40));
 
         btn_carril_1.setBackground(new java.awt.Color(102, 102, 102));
         btn_carril_1.setBorder(null);
@@ -105,7 +214,21 @@ public class Principal extends javax.swing.JFrame {
                 btn_carril_1ActionPerformed(evt);
             }
         });
-        getContentPane().add(btn_carril_1, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 360, 65, 40));
+        getContentPane().add(btn_carril_1, new org.netbeans.lib.awtextra.AbsoluteConstraints(133, 360, 61, 40));
+        getContentPane().add(Spn_number_cars, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 740, 70, 30));
+
+        Btn_reverse.setBackground(new java.awt.Color(0, 162, 232));
+        Btn_reverse.setBorder(null);
+        getContentPane().add(Btn_reverse, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 740, 80, 60));
+
+        Btn_traffic_ligth.setBackground(new java.awt.Color(0, 162, 232));
+        Btn_traffic_ligth.setBorder(null);
+        Btn_traffic_ligth.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                Btn_traffic_ligthActionPerformed(evt);
+            }
+        });
+        getContentPane().add(Btn_traffic_ligth, new org.netbeans.lib.awtextra.AbsoluteConstraints(910, 740, 90, 130));
 
         jFondo.setFocusable(false);
         jFondo.setRequestFocusEnabled(false);
@@ -154,13 +277,66 @@ public class Principal extends javax.swing.JFrame {
         // TODO add your handling code here:
         if(barrer==false){
             barrer=true;
-            ImageIcon barrer = new ImageIcon("src/Assets/open_toll_icon.png");
-            Icon iconBarrer = new ImageIcon(barrer.getImage().getScaledInstance(btn_Barrer.getWidth(), btn_Barrer.getHeight(), Image.SCALE_DEFAULT));
+            
+            barrer_carri_1=false;
+            barrer_carri_2=false;
+            barrer_carri_3=false;
+            barrer_carri_4=false;
+            barrer_carri_5=false;
+            barrer_carri_6=false;
+            barrer_carri_7=false;
+            barrer_carri_8=false;
+            barrer_carri_9=false;
+            barrer_carri_10=false;
+            barrer_carri_11=false;
+            
+            ImageIcon barrer_lane = new ImageIcon("src/Assets/barrier_icon.png");
+            Icon iconoCarril = new ImageIcon(barrer_lane.getImage().getScaledInstance(btn_carril_1.getWidth(), btn_carril_1.getHeight(), Image.SCALE_DEFAULT));
+            btn_carril_1.setIcon(iconoCarril);
+            btn_carril_2.setIcon(iconoCarril);
+            btn_carril_3.setIcon(iconoCarril);
+            btn_carril_4.setIcon(iconoCarril);
+            btn_carril_5.setIcon(iconoCarril);
+            btn_carril_6.setIcon(iconoCarril);
+            btn_carril_7.setIcon(iconoCarril);
+            btn_carril_8.setIcon(iconoCarril);
+            btn_carril_9.setIcon(iconoCarril);
+            btn_carril_10.setIcon(iconoCarril);
+            btn_carril_11.setIcon(iconoCarril);
+            
+            ImageIcon barrer_open = new ImageIcon("src/Assets/open_toll_icon.png");
+            Icon iconBarrer = new ImageIcon(barrer_open.getImage().getScaledInstance(btn_Barrer.getWidth(), btn_Barrer.getHeight(), Image.SCALE_DEFAULT));
             btn_Barrer.setIcon(iconBarrer);
         }else{
             barrer=false;
-            ImageIcon barrer = new ImageIcon("src/Assets/close_toll_icon.png");
-            Icon iconBarrer = new ImageIcon(barrer.getImage().getScaledInstance(btn_Barrer.getWidth(), btn_Barrer.getHeight(), Image.SCALE_DEFAULT));
+            
+            barrer_carri_1=true;
+            barrer_carri_2=true;
+            barrer_carri_3=true;
+            barrer_carri_4=true;
+            barrer_carri_5=true;
+            barrer_carri_6=true;
+            barrer_carri_7=true;
+            barrer_carri_8=true;
+            barrer_carri_9=true;
+            barrer_carri_10=true;
+            barrer_carri_11=true;
+            
+            btn_carril_1.setIcon(null);
+            btn_carril_2.setIcon(null);
+            btn_carril_3.setIcon(null);
+            btn_carril_4.setIcon(null);
+            btn_carril_5.setIcon(null);
+            btn_carril_6.setIcon(null);
+            btn_carril_7.setIcon(null);
+            btn_carril_8.setIcon(null);
+            btn_carril_9.setIcon(null);
+            btn_carril_10.setIcon(null);
+            btn_carril_11.setIcon(null);
+            
+            
+            ImageIcon barrer_close = new ImageIcon("src/Assets/close_toll_icon.png");
+            Icon iconBarrer = new ImageIcon(barrer_close.getImage().getScaledInstance(btn_Barrer.getWidth(), btn_Barrer.getHeight(), Image.SCALE_DEFAULT));
             btn_Barrer.setIcon(iconBarrer);
         }
     }//GEN-LAST:event_btn_BarrerActionPerformed
@@ -168,15 +344,13 @@ public class Principal extends javax.swing.JFrame {
     private void btn_carril_1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_carril_1ActionPerformed
         // TODO add your handling code here:
         if(barrer_carri_1==true){
-            ImageIcon carril1 = new ImageIcon("src/Assets/barrer-activate-line-icon.png");
+            ImageIcon carril1 = new ImageIcon("src/Assets/barrier_icon.png");
             Icon iconoCarril1 = new ImageIcon(carril1.getImage().getScaledInstance(btn_carril_1.getWidth(), btn_carril_1.getHeight(), Image.SCALE_DEFAULT));
             btn_carril_1.setIcon(iconoCarril1);
             this.repaint();
             barrer_carri_1=false;
         }else{
-            ImageIcon carril1 = new ImageIcon("src/Assets/barrer-desactive-line-icon.png");
-            Icon iconoCarril1 = new ImageIcon(carril1.getImage().getScaledInstance(btn_carril_1.getWidth(), btn_carril_1.getHeight(), Image.SCALE_DEFAULT));
-            btn_carril_1.setIcon(iconoCarril1);
+            btn_carril_1.setIcon(null);
             this.repaint();
             barrer_carri_1=true;
         }
@@ -185,55 +359,164 @@ public class Principal extends javax.swing.JFrame {
     private void btn_carril_2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_carril_2ActionPerformed
         // TODO add your handling code here:
         if(barrer_carri_2==true){
-            ImageIcon carril1 = new ImageIcon("src/Assets/barrer-activate-line-icon.png");
-            Icon iconoCarril1 = new ImageIcon(carril1.getImage().getScaledInstance(btn_carril_1.getWidth(), btn_carril_1.getHeight(), Image.SCALE_DEFAULT));
+            ImageIcon carril1 = new ImageIcon("src/Assets/barrier_icon.png");
+            Icon iconoCarril1 = new ImageIcon(carril1.getImage().getScaledInstance(btn_carril_2.getWidth(), btn_carril_2.getHeight(), Image.SCALE_DEFAULT));
             btn_carril_2.setIcon(iconoCarril1);
             this.repaint();
             barrer_carri_2=false;
         }else{
-            ImageIcon carril1 = new ImageIcon("src/Assets/barrer-desactive-line-icon.png");
-            Icon iconoCarril1 = new ImageIcon(carril1.getImage().getScaledInstance(btn_carril_2.getWidth(), btn_carril_2.getHeight(), Image.SCALE_DEFAULT));
-            btn_carril_2.setIcon(iconoCarril1);
+            btn_carril_2.setIcon(null);
             this.repaint();
             barrer_carri_2=true;
         }
     }//GEN-LAST:event_btn_carril_2ActionPerformed
 
-    /**
-     * @param args the command line arguments
-     */
-    public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(Principal.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(Principal.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(Principal.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(Principal.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+    private void btn_carril_3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_carril_3ActionPerformed
+        // TODO add your handling code here:
+        if(barrer_carri_3==true){
+            ImageIcon carril1 = new ImageIcon("src/Assets/barrier_icon.png");
+            Icon iconoCarril1 = new ImageIcon(carril1.getImage().getScaledInstance(btn_carril_3.getWidth(), btn_carril_3.getHeight(), Image.SCALE_DEFAULT));
+            btn_carril_3.setIcon(iconoCarril1);
+            this.repaint();
+            barrer_carri_3=false;
+        }else{
+            btn_carril_3.setIcon(null);
+            this.repaint();
+            barrer_carri_3=true;
         }
-        //</editor-fold>
+    }//GEN-LAST:event_btn_carril_3ActionPerformed
 
-        /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new Principal().setVisible(true);
-            }
-        });
-    }
-    
+    private void btn_carril_4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_carril_4ActionPerformed
+        // TODO add your handling code here:
+        if(barrer_carri_4==true){
+            ImageIcon carril1 = new ImageIcon("src/Assets/barrier_icon.png");
+            Icon iconoCarril1 = new ImageIcon(carril1.getImage().getScaledInstance(btn_carril_4.getWidth(), btn_carril_4.getHeight(), Image.SCALE_DEFAULT));
+            btn_carril_4.setIcon(iconoCarril1);
+            this.repaint();
+            barrer_carri_4=false;
+        }else{
+            btn_carril_4.setIcon(null);
+            this.repaint();
+            barrer_carri_4=true;
+        }
+    }//GEN-LAST:event_btn_carril_4ActionPerformed
+
+    private void btn_carril_5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_carril_5ActionPerformed
+        // TODO add your handling code here:
+        if(barrer_carri_5==true){
+            ImageIcon carril1 = new ImageIcon("src/Assets/barrier_icon.png");
+            Icon iconoCarril1 = new ImageIcon(carril1.getImage().getScaledInstance(btn_carril_5.getWidth(), btn_carril_5.getHeight(), Image.SCALE_DEFAULT));
+            btn_carril_5.setIcon(iconoCarril1);
+            this.repaint();
+            barrer_carri_5=false;
+        }else{
+            btn_carril_5.setIcon(null);
+            this.repaint();
+            barrer_carri_5=true;
+        }
+    }//GEN-LAST:event_btn_carril_5ActionPerformed
+
+    private void btn_carril_6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_carril_6ActionPerformed
+        // TODO add your handling code here:
+        if(barrer_carri_6==true){
+            ImageIcon carril1 = new ImageIcon("src/Assets/barrier_icon.png");
+            Icon iconoCarril1 = new ImageIcon(carril1.getImage().getScaledInstance(btn_carril_6.getWidth(), btn_carril_6.getHeight(), Image.SCALE_DEFAULT));
+            btn_carril_6.setIcon(iconoCarril1);
+            this.repaint();
+            barrer_carri_6=false;
+        }else{
+            btn_carril_6.setIcon(null);
+            this.repaint();
+            barrer_carri_6=true;
+        }
+    }//GEN-LAST:event_btn_carril_6ActionPerformed
+
+    private void btn_carril_7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_carril_7ActionPerformed
+        // TODO add your handling code here:
+        if(barrer_carri_7==true){
+            ImageIcon carril1 = new ImageIcon("src/Assets/barrier_icon.png");
+            Icon iconoCarril1 = new ImageIcon(carril1.getImage().getScaledInstance(btn_carril_7.getWidth(), btn_carril_7.getHeight(), Image.SCALE_DEFAULT));
+            btn_carril_7.setIcon(iconoCarril1);
+            this.repaint();
+            barrer_carri_7=false;
+        }else{
+            btn_carril_7.setIcon(null);
+            this.repaint();
+            barrer_carri_7=true;
+        }
+    }//GEN-LAST:event_btn_carril_7ActionPerformed
+
+    private void btn_carril_8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_carril_8ActionPerformed
+        // TODO add your handling code here:
+        if(barrer_carri_8==true){
+            ImageIcon carril1 = new ImageIcon("src/Assets/barrier_icon.png");
+            Icon iconoCarril1 = new ImageIcon(carril1.getImage().getScaledInstance(btn_carril_8.getWidth(), btn_carril_8.getHeight(), Image.SCALE_DEFAULT));
+            btn_carril_8.setIcon(iconoCarril1);
+            this.repaint();
+            barrer_carri_8=false;
+        }else{
+            btn_carril_8.setIcon(null);
+            this.repaint();
+            barrer_carri_8=true;
+        }
+    }//GEN-LAST:event_btn_carril_8ActionPerformed
+
+    private void btn_carril_9ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_carril_9ActionPerformed
+        // TODO add your handling code here:
+        if(barrer_carri_9==true){
+            ImageIcon carril1 = new ImageIcon("src/Assets/barrier_icon.png");
+            Icon iconoCarril1 = new ImageIcon(carril1.getImage().getScaledInstance(btn_carril_9.getWidth(), btn_carril_9.getHeight(), Image.SCALE_DEFAULT));
+            btn_carril_9.setIcon(iconoCarril1);
+            this.repaint();
+            barrer_carri_9=false;
+        }else{
+            btn_carril_9.setIcon(null);
+            this.repaint();
+            barrer_carri_9=true;
+        }
+    }//GEN-LAST:event_btn_carril_9ActionPerformed
+
+    private void btn_carril_10ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_carril_10ActionPerformed
+        // TODO add your handling code here:
+        if(barrer_carri_10==true){
+            ImageIcon carril1 = new ImageIcon("src/Assets/barrier_icon.png");
+            Icon iconoCarril1 = new ImageIcon(carril1.getImage().getScaledInstance(btn_carril_10.getWidth(), btn_carril_10.getHeight(), Image.SCALE_DEFAULT));
+            btn_carril_10.setIcon(iconoCarril1);
+            this.repaint();
+            barrer_carri_10=false;
+        }else{
+            btn_carril_10.setIcon(null);
+            this.repaint();
+            barrer_carri_10=true;
+        }
+    }//GEN-LAST:event_btn_carril_10ActionPerformed
+
+    private void btn_carril_11ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_carril_11ActionPerformed
+        // TODO add your handling code here:
+        if(barrer_carri_11==true){
+            ImageIcon carril1 = new ImageIcon("src/Assets/barrier_icon.png");
+            Icon iconoCarril1 = new ImageIcon(carril1.getImage().getScaledInstance(btn_carril_11.getWidth(), btn_carril_11.getHeight(), Image.SCALE_DEFAULT));
+            btn_carril_11.setIcon(iconoCarril1);
+            this.repaint();
+            barrer_carri_11=false;
+        }else{
+            btn_carril_11.setIcon(null);
+            this.repaint();
+            barrer_carri_11=true;
+        }
+    }//GEN-LAST:event_btn_carril_11ActionPerformed
+
+    private void btn_create_carActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_create_carActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btn_create_carActionPerformed
+
+    private void Btn_traffic_ligthActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Btn_traffic_ligthActionPerformed
+        // TODO add your handling code here:
+        
+        changeImage();
+        
+    }//GEN-LAST:event_Btn_traffic_ligthActionPerformed
+ 
     public void loadImage(){
         
         ImageIcon fondo = new ImageIcon("src/Assets/background_icon_0.png");
@@ -256,6 +539,14 @@ public class Principal extends javax.swing.JFrame {
         Icon iconoSpeedometer = new ImageIcon(speedometer.getImage().getScaledInstance(Lb_Speedometer.getWidth(), Lb_Speedometer.getHeight(), Image.SCALE_DEFAULT));
         Lb_Speedometer.setIcon(iconoSpeedometer);
         
+        ImageIcon reverse = new ImageIcon("src/Assets/reversed_rotating_icon.png");
+        Icon iconoReverse = new ImageIcon(reverse.getImage().getScaledInstance(Btn_reverse.getWidth(), Btn_reverse.getHeight(), Image.SCALE_DEFAULT));
+        Btn_reverse.setIcon(iconoReverse);
+        
+        ImageIcon traffic_light = new ImageIcon("src/Assets/traffic_light_green_icon.png");
+        Icon iconoTraffic_light = new ImageIcon(traffic_light.getImage().getScaledInstance(Btn_traffic_ligth.getWidth(), Btn_traffic_ligth.getHeight(), Image.SCALE_DEFAULT));
+        Btn_traffic_ligth.setIcon(iconoTraffic_light);
+        
         ImageIcon barrer = new ImageIcon("src/Assets/open_toll_icon.png");
         Icon iconBarrer = new ImageIcon(barrer.getImage().getScaledInstance(btn_Barrer.getWidth(), btn_Barrer.getHeight(), Image.SCALE_DEFAULT));
         btn_Barrer.setIcon(iconBarrer);
@@ -263,17 +554,59 @@ public class Principal extends javax.swing.JFrame {
         Icon iconoCarril = new ImageIcon(barrer_lane.getImage().getScaledInstance(btn_carril_1.getWidth(), btn_carril_1.getHeight(), Image.SCALE_DEFAULT));
         btn_carril_1.setIcon(iconoCarril);
         btn_carril_2.setIcon(iconoCarril);
+        btn_carril_3.setIcon(iconoCarril);
+        btn_carril_4.setIcon(iconoCarril);
+        btn_carril_5.setIcon(iconoCarril);
+        btn_carril_6.setIcon(iconoCarril);
+        btn_carril_7.setIcon(iconoCarril);
+        btn_carril_8.setIcon(iconoCarril);
+        btn_carril_9.setIcon(iconoCarril);
+        btn_carril_10.setIcon(iconoCarril);
+        btn_carril_11.setIcon(iconoCarril);
+        
+    }
+    public void changeImage(){
+        
+        for (int cont1 = 0 ; cont1<10000 ; cont1++){
+            if(cont1==9999){
+                ImageIcon traffic_light_yellow = new ImageIcon("src/Assets/traffic_light_yellow_icon.png");
+                Icon iconoTraffic_light_yellow = new ImageIcon(traffic_light_yellow.getImage().getScaledInstance(Btn_traffic_ligth.getWidth(), Btn_traffic_ligth.getHeight(), Image.SCALE_DEFAULT));
+                Btn_traffic_ligth.setIcon(iconoTraffic_light_yellow);
+                
+                for(int cont2 = 0; cont2<100000 ; cont2++){
+                    
+                    if(cont2==99999){
+                        ImageIcon traffic_light_red = new ImageIcon("src/Assets/traffic_light_red_icon.png");
+                        Icon iconoTraffic_light_red = new ImageIcon(traffic_light_red.getImage().getScaledInstance(Btn_traffic_ligth.getWidth(), Btn_traffic_ligth.getHeight(), Image.SCALE_DEFAULT));
+                        Btn_traffic_ligth.setIcon(iconoTraffic_light_red);
+                    }
+                }
+            }
+        }
+
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton Btn_Brake;
     private javax.swing.JButton Btn_Gas_Brake;
+    private javax.swing.JButton Btn_reverse;
+    private javax.swing.JButton Btn_traffic_ligth;
     private javax.swing.JLabel Lb_Car;
     private javax.swing.JLabel Lb_Speedometer;
+    private javax.swing.JSpinner Spn_number_cars;
     private javax.swing.JButton btn_Barrer;
     private javax.swing.JButton btn_carril_1;
+    private javax.swing.JButton btn_carril_10;
+    private javax.swing.JButton btn_carril_11;
     private javax.swing.JButton btn_carril_2;
-    private javax.swing.JButton jButton1;
+    private javax.swing.JButton btn_carril_3;
+    private javax.swing.JButton btn_carril_4;
+    private javax.swing.JButton btn_carril_5;
+    private javax.swing.JButton btn_carril_6;
+    private javax.swing.JButton btn_carril_7;
+    private javax.swing.JButton btn_carril_8;
+    private javax.swing.JButton btn_carril_9;
+    private javax.swing.JButton btn_create_car;
     private javax.swing.JLabel jFondo;
     // End of variables declaration//GEN-END:variables
 }
