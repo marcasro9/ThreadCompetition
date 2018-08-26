@@ -83,7 +83,6 @@ public class Home extends javax.swing.JFrame {
         // TODO add your handling code here:
         Principal principal = new Principal();
         principal.setVisible(true);
-        this.dispose();
         
     }//GEN-LAST:event_btn_playActionPerformed
 
@@ -91,7 +90,6 @@ public class Home extends javax.swing.JFrame {
         // TODO add your handling code here:
         About about = new About();
         about.setVisible(true);
-        this.dispose();
         
     }//GEN-LAST:event_jAboutActionPerformed
 

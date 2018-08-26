@@ -20,6 +20,7 @@ public class Principal extends javax.swing.JFrame {
     
     
     private int position_tachometer = 0;
+    private int cont=0;
     private boolean barrer = false;
     private boolean barrer_carri_1=false;
     private boolean barrer_carri_2=false;
@@ -58,7 +59,7 @@ public class Principal extends javax.swing.JFrame {
         Lb_Speedometer = new javax.swing.JLabel();
         Lb_Car = new javax.swing.JLabel();
         btn_create_car = new javax.swing.JButton();
-        btn_Barrer = new javax.swing.JButton();
+        Btn_Barrer = new javax.swing.JButton();
         btn_carril_10 = new javax.swing.JButton();
         btn_carril_11 = new javax.swing.JButton();
         btn_carril_9 = new javax.swing.JButton();
@@ -73,9 +74,11 @@ public class Principal extends javax.swing.JFrame {
         Spn_number_cars = new javax.swing.JSpinner();
         Btn_reverse = new javax.swing.JButton();
         Btn_traffic_ligth = new javax.swing.JButton();
+        Btn_Simulation = new javax.swing.JButton();
+        jPanel1 = new javax.swing.JPanel();
         jFondo = new javax.swing.JLabel();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         Btn_Gas_Brake.setBackground(new java.awt.Color(0, 162, 232));
@@ -108,14 +111,14 @@ public class Principal extends javax.swing.JFrame {
         });
         getContentPane().add(btn_create_car, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 890, 300, 70));
 
-        btn_Barrer.setBackground(new java.awt.Color(0, 162, 232));
-        btn_Barrer.setBorder(null);
-        btn_Barrer.addActionListener(new java.awt.event.ActionListener() {
+        Btn_Barrer.setBackground(new java.awt.Color(0, 162, 232));
+        Btn_Barrer.setBorder(null);
+        Btn_Barrer.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btn_BarrerActionPerformed(evt);
+                Btn_BarrerActionPerformed(evt);
             }
         });
-        getContentPane().add(btn_Barrer, new org.netbeans.lib.awtextra.AbsoluteConstraints(650, 740, 240, 130));
+        getContentPane().add(Btn_Barrer, new org.netbeans.lib.awtextra.AbsoluteConstraints(650, 740, 240, 130));
 
         btn_carril_10.setBackground(new java.awt.Color(102, 102, 102));
         btn_carril_10.setBorder(null);
@@ -230,6 +233,14 @@ public class Principal extends javax.swing.JFrame {
         });
         getContentPane().add(Btn_traffic_ligth, new org.netbeans.lib.awtextra.AbsoluteConstraints(910, 740, 90, 130));
 
+        Btn_Simulation.setBackground(new java.awt.Color(0, 162, 232));
+        Btn_Simulation.setBorder(null);
+        getContentPane().add(Btn_Simulation, new org.netbeans.lib.awtextra.AbsoluteConstraints(1020, 740, 200, 130));
+
+        jPanel1.setOpaque(false);
+        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 110, 1130, 550));
+
+        jFondo.setForeground(new java.awt.Color(0, 162, 232));
         jFondo.setFocusable(false);
         jFondo.setRequestFocusEnabled(false);
         jFondo.setVerifyInputWhenFocusTarget(false);
@@ -273,10 +284,10 @@ public class Principal extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_Btn_BrakeActionPerformed
 
-    private void btn_BarrerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_BarrerActionPerformed
+    private void Btn_BarrerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Btn_BarrerActionPerformed
         // TODO add your handling code here:
-        if(barrer==false){
-            barrer=true;
+        if(barrer==true){
+            barrer=false;
             
             barrer_carri_1=false;
             barrer_carri_2=false;
@@ -305,10 +316,10 @@ public class Principal extends javax.swing.JFrame {
             btn_carril_11.setIcon(iconoCarril);
             
             ImageIcon barrer_open = new ImageIcon("src/Assets/open_toll_icon.png");
-            Icon iconBarrer = new ImageIcon(barrer_open.getImage().getScaledInstance(btn_Barrer.getWidth(), btn_Barrer.getHeight(), Image.SCALE_DEFAULT));
-            btn_Barrer.setIcon(iconBarrer);
+            Icon iconBarrer = new ImageIcon(barrer_open.getImage().getScaledInstance(Btn_Barrer.getWidth(), Btn_Barrer.getHeight(), Image.SCALE_DEFAULT));
+            Btn_Barrer.setIcon(iconBarrer);
         }else{
-            barrer=false;
+            barrer=true;
             
             barrer_carri_1=true;
             barrer_carri_2=true;
@@ -336,10 +347,10 @@ public class Principal extends javax.swing.JFrame {
             
             
             ImageIcon barrer_close = new ImageIcon("src/Assets/close_toll_icon.png");
-            Icon iconBarrer = new ImageIcon(barrer_close.getImage().getScaledInstance(btn_Barrer.getWidth(), btn_Barrer.getHeight(), Image.SCALE_DEFAULT));
-            btn_Barrer.setIcon(iconBarrer);
+            Icon iconBarrer = new ImageIcon(barrer_close.getImage().getScaledInstance(Btn_Barrer.getWidth(), Btn_Barrer.getHeight(), Image.SCALE_DEFAULT));
+            Btn_Barrer.setIcon(iconBarrer);
         }
-    }//GEN-LAST:event_btn_BarrerActionPerformed
+    }//GEN-LAST:event_Btn_BarrerActionPerformed
 
     private void btn_carril_1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_carril_1ActionPerformed
         // TODO add your handling code here:
@@ -513,7 +524,31 @@ public class Principal extends javax.swing.JFrame {
     private void Btn_traffic_ligthActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Btn_traffic_ligthActionPerformed
         // TODO add your handling code here:
         
-        changeImage();
+        switch (cont){
+            case 0: 
+
+                ImageIcon traffic_light_green = new ImageIcon("src/Assets/traffic_light_green_icon.png");
+                Icon iconoTraffic_light_green = new ImageIcon(traffic_light_green.getImage().getScaledInstance(Btn_traffic_ligth.getWidth(), Btn_traffic_ligth.getHeight(), Image.SCALE_DEFAULT));
+                Btn_traffic_ligth.setIcon(iconoTraffic_light_green);
+                cont = 1;
+                break;
+
+            case 1: 
+
+                ImageIcon traffic_light_yellow = new ImageIcon("src/Assets/traffic_light_yellow_icon.png");
+                Icon iconoTraffic_light_yellow = new ImageIcon(traffic_light_yellow.getImage().getScaledInstance(Btn_traffic_ligth.getWidth(), Btn_traffic_ligth.getHeight(), Image.SCALE_DEFAULT));
+                Btn_traffic_ligth.setIcon(iconoTraffic_light_yellow);
+                cont = 2;
+                break;
+
+            case 2:
+                
+                ImageIcon traffic_light_red = new ImageIcon("src/Assets/traffic_light_red_icon.png");
+                Icon iconoTraffic_light_red = new ImageIcon(traffic_light_red.getImage().getScaledInstance(Btn_traffic_ligth.getWidth(), Btn_traffic_ligth.getHeight(), Image.SCALE_DEFAULT));
+                Btn_traffic_ligth.setIcon(iconoTraffic_light_red);
+                cont = 0;
+                break;
+        }  
         
     }//GEN-LAST:event_Btn_traffic_ligthActionPerformed
  
@@ -543,15 +578,21 @@ public class Principal extends javax.swing.JFrame {
         Icon iconoReverse = new ImageIcon(reverse.getImage().getScaledInstance(Btn_reverse.getWidth(), Btn_reverse.getHeight(), Image.SCALE_DEFAULT));
         Btn_reverse.setIcon(iconoReverse);
         
-        ImageIcon traffic_light = new ImageIcon("src/Assets/traffic_light_green_icon.png");
+        ImageIcon traffic_light = new ImageIcon("src/Assets/traffic_light_red_icon.png");
         Icon iconoTraffic_light = new ImageIcon(traffic_light.getImage().getScaledInstance(Btn_traffic_ligth.getWidth(), Btn_traffic_ligth.getHeight(), Image.SCALE_DEFAULT));
         Btn_traffic_ligth.setIcon(iconoTraffic_light);
         
         ImageIcon barrer = new ImageIcon("src/Assets/open_toll_icon.png");
-        Icon iconBarrer = new ImageIcon(barrer.getImage().getScaledInstance(btn_Barrer.getWidth(), btn_Barrer.getHeight(), Image.SCALE_DEFAULT));
-        btn_Barrer.setIcon(iconBarrer);
+        Icon iconBarrer = new ImageIcon(barrer.getImage().getScaledInstance(Btn_Barrer.getWidth(), Btn_Barrer.getHeight(), Image.SCALE_DEFAULT));
+        Btn_Barrer.setIcon(iconBarrer);
+        
+        ImageIcon simulation = new ImageIcon("src/Assets/start_icon.png");
+        Icon icon_simulation = new ImageIcon(simulation.getImage().getScaledInstance(Btn_Barrer.getWidth(), Btn_Barrer.getHeight(), Image.SCALE_DEFAULT));
+        Btn_Simulation.setIcon(icon_simulation);
+        
         ImageIcon barrer_lane = new ImageIcon("src/Assets/barrier_icon.png");
         Icon iconoCarril = new ImageIcon(barrer_lane.getImage().getScaledInstance(btn_carril_1.getWidth(), btn_carril_1.getHeight(), Image.SCALE_DEFAULT));
+        
         btn_carril_1.setIcon(iconoCarril);
         btn_carril_2.setIcon(iconoCarril);
         btn_carril_3.setIcon(iconoCarril);
@@ -563,38 +604,18 @@ public class Principal extends javax.swing.JFrame {
         btn_carril_9.setIcon(iconoCarril);
         btn_carril_10.setIcon(iconoCarril);
         btn_carril_11.setIcon(iconoCarril);
-        
     }
-    public void changeImage(){
-        
-        for (int cont1 = 0 ; cont1<10000 ; cont1++){
-            if(cont1==9999){
-                ImageIcon traffic_light_yellow = new ImageIcon("src/Assets/traffic_light_yellow_icon.png");
-                Icon iconoTraffic_light_yellow = new ImageIcon(traffic_light_yellow.getImage().getScaledInstance(Btn_traffic_ligth.getWidth(), Btn_traffic_ligth.getHeight(), Image.SCALE_DEFAULT));
-                Btn_traffic_ligth.setIcon(iconoTraffic_light_yellow);
-                
-                for(int cont2 = 0; cont2<100000 ; cont2++){
-                    
-                    if(cont2==99999){
-                        ImageIcon traffic_light_red = new ImageIcon("src/Assets/traffic_light_red_icon.png");
-                        Icon iconoTraffic_light_red = new ImageIcon(traffic_light_red.getImage().getScaledInstance(Btn_traffic_ligth.getWidth(), Btn_traffic_ligth.getHeight(), Image.SCALE_DEFAULT));
-                        Btn_traffic_ligth.setIcon(iconoTraffic_light_red);
-                    }
-                }
-            }
-        }
-
-    }
-
+    
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton Btn_Barrer;
     private javax.swing.JButton Btn_Brake;
     private javax.swing.JButton Btn_Gas_Brake;
+    private javax.swing.JButton Btn_Simulation;
     private javax.swing.JButton Btn_reverse;
-    private javax.swing.JButton Btn_traffic_ligth;
+    public javax.swing.JButton Btn_traffic_ligth;
     private javax.swing.JLabel Lb_Car;
     private javax.swing.JLabel Lb_Speedometer;
     private javax.swing.JSpinner Spn_number_cars;
-    private javax.swing.JButton btn_Barrer;
     private javax.swing.JButton btn_carril_1;
     private javax.swing.JButton btn_carril_10;
     private javax.swing.JButton btn_carril_11;
@@ -608,5 +629,6 @@ public class Principal extends javax.swing.JFrame {
     private javax.swing.JButton btn_carril_9;
     private javax.swing.JButton btn_create_car;
     private javax.swing.JLabel jFondo;
+    private javax.swing.JPanel jPanel1;
     // End of variables declaration//GEN-END:variables
 }
