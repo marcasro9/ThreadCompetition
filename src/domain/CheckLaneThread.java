@@ -7,34 +7,31 @@ package domain;
 
 import java.util.logging.Level;
 import java.util.logging.Logger;
+
 /**
  *
  * @author dasanchez13
  */
-public class MoveVehicleThread implements Runnable{
+public class CheckLaneThread implements Runnable{
+    
     private boolean running;
-    private Vehicle myObject;
+    private Lane myObject;
     private int sleepTime;
     private String name;
     
-    public MoveVehicleThread(Vehicle obj, String name, boolean running){
+    public CheckLaneThread(Lane obj, String name, boolean running){
         this.myObject = obj;
         this.running = running;
         this.name = name;
-        this.sleepTime = 100;
+        this.sleepTime = 50;
     }
 
     @Override
     public void run() {
-        while(running && myObject.isCanMove()){
+        while(running){
             try {
-                myObject.move();
+                myObject.verifyMovement();
                 Thread.sleep(this.sleepTime);
-                //System.out.println(myObject.getY());
-                int posY = (int) myObject.getY();
-                if(posY-25 > 600 || posY+25<10){
-                    this.setRunning(false);
-                }
             } catch (InterruptedException ex) {
                 Logger.getLogger(MoveVehicleThread.class.getName()).log(Level.SEVERE, null, ex);
             }

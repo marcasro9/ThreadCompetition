@@ -46,6 +46,8 @@ public class Vehicle {
         this.x = x;
         this.y = y;
         this.imgNum = imgNum;
+        this.canMove = true;
+        this.direction = true;
     }
 
     public int getSpeed() {

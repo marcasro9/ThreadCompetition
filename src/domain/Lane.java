@@ -6,7 +6,6 @@
 package domain;
 
 import java.util.ArrayList;
-import java.util.Collections;
 
 /**
  *
@@ -31,6 +30,8 @@ public class Lane {
     public void addVehicle(Vehicle v){
         v.setX(this.x);
         this.vehicles.add(v);
+        //this is where I guess should be a function that 
+        //verify if the vehicle must go to queue or not
     }
     
     public void deleteVehicle(int i){
@@ -90,6 +91,7 @@ public class Lane {
                 if(spaceUsedByNext-mySpace < 0){
                     temp.setCanMove(false);
                 }
+                System.out.println(temp.isCanMove());
             }
         }else{
             int lastElement = this.vehicles.size()-2;

@@ -6,6 +6,10 @@
 package thread.competition;
 
 import GUI.Home;
+import domain.CheckLaneThread;
+import domain.Lane;
+import domain.MoveVehicleThread;
+import domain.Vehicle;
 
 /**
  *
@@ -18,8 +22,25 @@ public class ThreadCompetition {
      */
     public static void main(String[] args) {
         // TODO code application logic here
-        Home home = new Home();
-        home.setVisible(true);
+        //Home home = new Home();
+        //home.setVisible(true);
+        
+        Vehicle v = new Vehicle(3,4,7);
+        v.setSpeed(10);
+        MoveVehicleThread mv = new MoveVehicleThread(v,"test",true);
+        new Thread(mv).start();
+        
+        Vehicle vh = new Vehicle(3,4,7);
+        vh.setSpeed(2);
+        MoveVehicleThread mvh = new MoveVehicleThread(vh,"test",true);
+        new Thread(mvh).start();
+        
+        Lane l = new Lane(3);
+        l.addVehicle(v);
+        l.addVehicle(vh);
+        l.setDirection(true);
+        CheckLaneThread chkl = new CheckLaneThread(l,"lane test",true);
+        new Thread(chkl).start();
+        
     }
-    
 }
