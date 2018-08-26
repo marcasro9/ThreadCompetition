@@ -30,6 +30,12 @@ public class Lane {
     public void addVehicle(Vehicle v){
         v.setX(this.x);
         this.vehicles.add(v);
+        int idVehicle = v.getId();
+        
+        //this part of code must be examined later
+        String threadName = "Vehicle Thread number "+ Integer.toString(idVehicle);
+        MoveVehicleThread mv = new MoveVehicleThread(v,threadName,true);
+        new Thread(mv).start();
         //this is where I guess should be a function that 
         //verify if the vehicle must go to queue or not
     }
@@ -103,10 +109,29 @@ public class Lane {
                 spaceUsedByNext += nextVehicle.getSpeed();
                 int mySpace = (int) temp.getY() + 25;
                 mySpace+=temp.getSpeed();
-                if(spaceUsedByNext-mySpace < 0){
+                if(spaceUsedByNext-mySpace < 0 && !youShallNotPass(mySpace)){
                     temp.setCanMove(false);
                 }
             }
+        }
+    }
+    
+    public boolean youShallNotPass(int posY_Vehicle){
+        if(this.wall){
+           //the vehicle is far of the wall
+            if(300 - posY_Vehicle <= 0){
+                return false;
+            }else{
+                return true;
+            }
+        }else{
+            return false;
+        }
+    }
+    
+    public void revert(){
+        for(int i = 0; i < this.vehicles.size(); i++){
+            this.vehicles.get(i).setDirection(false);
         }
     }
     

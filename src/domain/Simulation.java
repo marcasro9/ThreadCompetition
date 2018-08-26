@@ -49,4 +49,10 @@ public class Simulation {
             temp.addVehicle(v);
         }
     }
+    
+    public void revert(){
+        for(int i = 0; i < this.highway.size(); i++){
+            this.highway.get(i).revert();
+        }
+    }
 }
