@@ -133,7 +133,8 @@ public class Lane {
     }
     
     public void verifyMovement(){
-        if(this.direction){
+        if(!this.vehicles.isEmpty()){
+            if(this.direction){
             for(int i = 1; i < this.vehicles.size(); i++){
             //starts with 1 because the first element always is allowed to move
                 Vehicle nextVehicle = this.vehicles.get(i-1);
@@ -145,7 +146,6 @@ public class Lane {
                 if(spaceUsedByNext-mySpace < 0){
                     temp.setCanMove(false);
                 }
-                System.out.println(temp.isCanMove());
             }
         }else{
             int lastElement = this.vehicles.size()-2;
@@ -162,12 +162,13 @@ public class Lane {
                 }
             }
         }
+        }
     }
     
     public boolean youShallNotPass(int posY_Vehicle){
         if(this.wall){
            //the vehicle is far of the wall
-            if(300 - posY_Vehicle <= 0){
+            if(300 > (posY_Vehicle - 25) && 300 < (posY_Vehicle +25)){
                 return false;
             }else{
                 return true;
