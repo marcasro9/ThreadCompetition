@@ -19,6 +19,7 @@ public class Simulation {
     private int vehiclesGenerated;
     private ArrayList<MoveVehicleThread> v_Threads;
     private ArrayList<CheckLaneThread> l_Threads;
+    private boolean paused;
     
     Simulation(){
         this.highway = new ArrayList<>();
@@ -26,6 +27,7 @@ public class Simulation {
         this.l_Threads = new ArrayList<>();
         random = new Random();
         vehiclesGenerated = 0;
+        this.paused = false;
     }
     
     //this function inserts a vehicle in the lane with the less quantity of vehicles
@@ -59,12 +61,23 @@ public class Simulation {
             MoveVehicleThread mvt = new MoveVehicleThread(v, threadName, true);
             this.v_Threads.add(mvt);
             temp.addVehicle(v,mvt);
+            i += 1;
         }
     }
     
     public void revert(){
         for(int i = 0; i < this.highway.size(); i++){
             this.highway.get(i).revert();
+        }
+    }
+    
+    public void pause(){
+        this.paused = !this.paused;
+        for(int i = 0; i < this.v_Threads.size(); i++){
+            this.v_Threads.get(i).setRunning(this.paused);
+        }
+        for(int k = 0; k < this.l_Threads.size(); k++){
+            this.l_Threads.get(k).setRunning(this.paused);
         }
     }
 }

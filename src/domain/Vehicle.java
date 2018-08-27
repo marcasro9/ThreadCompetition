@@ -84,8 +84,6 @@ public class Vehicle {
         }
     }
     
-    
-
     public int getId() {
         return id;
     }

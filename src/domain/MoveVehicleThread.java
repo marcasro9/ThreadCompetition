@@ -26,19 +26,13 @@ public class MoveVehicleThread implements Runnable{
 
     @Override
     public void run() {
-        while(running && myObject.isCanMove()){
+        while(myObject.isCanMove() && running){
             try {
                 myObject.move();
                 Thread.sleep(this.sleepTime);
-                //System.out.println(myObject.getY());
-                int posY = (int) myObject.getY();
-                if(posY-25 > 600 || posY+25<10){
-                    this.setRunning(false);
-                }
             } catch (InterruptedException ex) {
                 Logger.getLogger(MoveVehicleThread.class.getName()).log(Level.SEVERE, null, ex);
             }
-            
         }
     }
     

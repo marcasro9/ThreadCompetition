@@ -70,6 +70,17 @@ public class Lane {
         }
     }
     
+    public void deleteFirstVehicle(){
+        if(!this.vehicles.isEmpty()){
+            Vehicle temp = this.vehicles.get(0);
+            int posY_FirstVehicle = (int)temp.getY() - 25;
+            if(posY_FirstVehicle > 600){
+                temp.setCanMove(false);
+                this.vehicles.remove(0);
+            }
+        }
+    }
+    
     public int getPosY_LastVehicle(){
         int last_Vehicle = this.vehicles.size() - 1;
         Vehicle temp = this.vehicles.get(last_Vehicle);
@@ -167,16 +178,9 @@ public class Lane {
     }
     
     public void revert(){
+        this.direction = !this.direction;
         for(int i = 0; i < this.vehicles.size(); i++){
-            this.vehicles.get(i).setDirection(false);
+            this.vehicles.get(i).setDirection(this.direction);
         }
-    }
-    
-    public void setDirection(boolean direction){
-        this.direction = direction;
-        for(int i = 0; i < this.vehicles.size(); i++){
-            this.vehicles.get(i).setDirection(direction);
-        }
-        //Collections.reverse(this.vehicles);
     }
 }
