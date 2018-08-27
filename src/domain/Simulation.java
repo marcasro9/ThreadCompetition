@@ -16,10 +16,14 @@ import java.util.Random;
 public class Simulation {
     private ArrayList<Lane> highway;
     private Random random;
-    private int vehiclesGenerated; 
+    private int vehiclesGenerated;
+    private ArrayList<MoveVehicleThread> v_Threads;
+    private ArrayList<CheckLaneThread> l_Threads;
     
     Simulation(){
-        highway = new ArrayList<>();
+        this.highway = new ArrayList<>();
+        this.v_Threads = new ArrayList<>();
+        this.l_Threads = new ArrayList<>();
         random = new Random();
         vehiclesGenerated = 0;
     }
@@ -32,7 +36,12 @@ public class Simulation {
         }
         
         int minIndex = vehiclesByLane.indexOf(Collections.min(vehiclesByLane));
-        highway.get(minIndex).addVehicle(v);
+        this.vehiclesGenerated += 1;
+        v.setId(this.vehiclesGenerated);
+        String threadName = "Vehicle Thread number "+ Integer.toString(vehiclesGenerated);
+        MoveVehicleThread mvt = new MoveVehicleThread(v,threadName,true);
+        this.v_Threads.add(mvt);
+        highway.get(minIndex).addVehicle(v,mvt);
     }
     
     public void insertVh_RandomLane(int speed, int howMany){
@@ -46,7 +55,10 @@ public class Simulation {
             v.setY(10);
             v.setDirection(true);
             v.setId(this.vehiclesGenerated);
-            temp.addVehicle(v);
+            String threadName = "Vehicle Thread number "+ Integer.toString(this.vehiclesGenerated);
+            MoveVehicleThread mvt = new MoveVehicleThread(v, threadName, true);
+            this.v_Threads.add(mvt);
+            temp.addVehicle(v,mvt);
         }
     }
     

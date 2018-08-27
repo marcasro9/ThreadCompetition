@@ -6,6 +6,8 @@
 package domain;
 
 import java.util.ArrayList;
+import java.util.LinkedList;
+import java.util.Queue;
 
 /**
  *
@@ -18,26 +20,61 @@ public class Lane {
     private ArrayList<Vehicle> vehicles;
     private boolean wall;
     private boolean direction;
+    private Queue<Vehicle> queueVehicles;
+    private Queue<MoveVehicleThread> queueMoveVehiclesThreads;
 
     public Lane(int x) {
         this.x = x;
         this.initial_Y = 10;
         this.final_Y = 600;
         this.vehicles = new ArrayList<>();
-        wall = false;
+        this.queueVehicles = new LinkedList<>();
+        this.queueMoveVehiclesThreads = new LinkedList<>();
+        this.wall = false;
     }
     
-    public void addVehicle(Vehicle v){
+    public void addVehicle(Vehicle v, MoveVehicleThread mvt){
         v.setX(this.x);
-        this.vehicles.add(v);
-        int idVehicle = v.getId();
-        
-        //this part of code must be examined later
-        String threadName = "Vehicle Thread number "+ Integer.toString(idVehicle);
-        MoveVehicleThread mv = new MoveVehicleThread(v,threadName,true);
-        new Thread(mv).start();
-        //this is where I guess should be a function that 
-        //verify if the vehicle must go to queue or not
+        if(!this.vehicles.isEmpty()){
+            int posY_LastVehicle = getPosY_LastVehicle();
+            if(posY_LastVehicle < 35){//I suppose this is the min posY of a vehicle
+                v.setCanMove(false);
+                this.queueVehicles.add(v);
+                mvt.setRunning(false);
+                this.queueMoveVehiclesThreads.add(mvt);
+            }else{
+                v.setCanMove(true);
+                v.setDirection(direction);
+                this.vehicles.add(v);
+                new Thread(mvt).start();
+            }
+        }else{
+            v.setCanMove(true);
+            v.setDirection(direction);
+            this.vehicles.add(v);
+            new Thread(mvt).start();
+        }
+    }
+    
+    public void checkQueue(){
+        if(!this.queueVehicles.isEmpty()){
+            int posY_LastVehicle = getPosY_LastVehicle();
+            if(posY_LastVehicle > 35){
+                Vehicle v = this.queueVehicles.poll();
+                MoveVehicleThread mvt = this.queueMoveVehiclesThreads.poll();
+                v.setCanMove(true);
+                v.setDirection(direction);
+                mvt.setRunning(true);
+                new Thread(mvt).start();
+            }
+        }
+    }
+    
+    public int getPosY_LastVehicle(){
+        int last_Vehicle = this.vehicles.size() - 1;
+        Vehicle temp = this.vehicles.get(last_Vehicle);
+        int posY_LastVehicle = (int)temp.getY() - 25;
+        return posY_LastVehicle;
     }
     
     public void deleteVehicle(int i){
